@@ -1,10 +1,10 @@
 If you want to contribute skins to B3log Solo, fork this repository and pull request after the new skink done!
 
-Èç¹ûÄãÒª¹±Ï×Æ¤·ô¸ø B3log Solo£¬Fork ´Ë¿â½øĞĞÆ¤·ô¿ª·¢£¬Íê³Éºó Pull Request °É£¡
+å¦‚æœä½ è¦è´¡çŒ®çš®è‚¤ç»™ B3log Soloï¼ŒFork æ­¤åº“è¿›è¡Œçš®è‚¤å¼€å‘ï¼Œå®Œæˆå Pull Request å§ï¼
 
 ====
 
-Æ½µÈ£¬×ÔÓÉ£¬±¼·Å
+å¹³ç­‰ï¼Œè‡ªç”±ï¼Œå¥”æ”¾
 Equality, Freedom, Passion
 
-;-£©
+;-ï¼‰
