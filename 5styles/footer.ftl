@@ -11,7 +11,7 @@
 					<span style="color: blue;">G</span>&nbsp;
 					<span style="color: orangered; font-weight: bold;">Solo</span></a>,
 				ver ${version}&nbsp;&nbsp;
-				Theme by <a href="http://www.noday.net" target="_blank">Noday</a> 
+				Theme[5style for 0.5.0] by <a href="http://www.noday.net" target="_blank">Noday</a>
 				& <a href="http://marslau.com" target="_blank" title="Mars Lau's blog">Mars Lau</a>
 			</p>
 			</div>
