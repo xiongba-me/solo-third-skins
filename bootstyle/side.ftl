@@ -8,12 +8,12 @@
 </#if>
 
 <#if 0 != recentComments?size>
-<section class="widget-2 widget">
+<section id="widget_recent_comments" class="widget-2 widget comments">
     <div class="widget-inner"><h4>${recentCommentsLabel}</h4>
         <ul>
             <#list recentComments as comment>
             <li class="recentcomments">
-                <a target="_blank" rel="external nofollow" href="${comment.commentURL}" class="url">${comment.commentName}</a>
+                <a target="_blank" rel="external nofollow" href="${comment.commentURL}" class="url">${comment.commentName}:</a>
                 <a rel="external nofollow" class=" breakline url" href="${comment.commentSharpURL}">
                     ${comment.commentContent}
                 </a>

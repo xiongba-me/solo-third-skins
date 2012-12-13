@@ -11,8 +11,15 @@ var bootstyle = {
             }
         });
     },
+    setCommentEmotions:function(){
+        // comments emotions
+        $(".comments").each(function(){
+            $(this).html(Util.replaceEmString($(this).html()));
+        });
+    },
     init:function(){
         this.setNavCurrent();
+        this.setCommentEmotions();
     }
 };
 $(function(){
