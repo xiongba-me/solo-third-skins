@@ -14,16 +14,10 @@
                     <li><a href="${page.pagePermalink}" target="${page.pageOpenTarget}">${page.pageTitle}</a></li>
                     </#list>
                     <li>
-                        <a href="${servePath}/dynamic.html">${dynamicLabel}</a>
-                    </li>
-                    <li>
                         <a href="${servePath}/tags.html">${allTagsLabel}</a>
                     </li>
                     <li>
                         <a href="${servePath}/archives.html">${archiveLabel}</a>
-                    </li>
-                    <li>
-                        <a href="${servePath}/links.html">${linkLabel}</a>
                     </li>
                     <li>
                         <a rel="alternate" href="${servePath}/blog-articles-feed.do">Atom<img src="${staticServePath}/images/feed.png" alt="Atom"/></a>

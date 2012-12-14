@@ -1,4 +1,5 @@
 <#include "macro-head.ftl">
+<#include "macro-comments.ftl">
 <!DOCTYPE html>
 <html>
     <head>
@@ -71,6 +72,7 @@
                 </div>
             </#if>
             </div>
+            <@comments commentList=articleComments article=article></@comments>
         </div>
         <aside id="sidebar" class="span4" role="complementary">
         <#include "side.ftl">
@@ -78,5 +80,17 @@
     </div>
 </div>
 <#include "footer.ftl">
+<@comment_script oId=article.oId>
+page.tips.externalRelevantArticlesDisplayCount = "${externalRelevantArticlesDisplayCount}";
+    <#if 0 != randomArticlesDisplayCount>
+    page.loadRandomArticles('<h4 class="ft-gray">${randomArticlesLabel}</h4>');
+    </#if>
+    <#if 0 != relevantArticlesDisplayCount>
+    page.loadRelevantArticles('${article.oId}', '<h4 class="ft-gray">${relevantArticlesLabel}</h4>');
+    </#if>
+    <#if 0 != externalRelevantArticlesDisplayCount>
+    page.loadExternalRelevantArticles("<#list article.articleTags?split(",") as articleTag>${articleTag}<#if articleTag_has_next>,</#if></#list>");
+    </#if>
+</@comment_script>
 </body>
 </html>

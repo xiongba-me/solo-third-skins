@@ -2,28 +2,28 @@
     <div class="navbar-inner">
         <div class="container">
             <div class="pull-left">
-                <span class="ft-gray">&copy; ${year}</span> - <a href="${servePath}">${blogTitle}</a>
+                <span>&copy; ${year}</span> - <a href="${servePath}">${blogTitle}</a>
                 Powered by
                 <a href="http://b3log.org" target="_blank" class="logo">
                 ${b3logLabel}&nbsp;
                     <span style="color: orangered; font-weight: bold;">Solo</span></a>,
                 ver ${version}&nbsp;&nbsp;
-                Theme by <a rel="friend" rel="friend" href="http://vanessa.b3log.org" target="_blank">Vanessa</a>.
+                Theme by <a rel="friend" rel="friend" href="http://www.oncereply.me" target="_blank">oncereply</a>.
             </div>
             <div class="pull-right">
                 <div class="pull-left">
                 ${viewCount1Label}
-                    <span class="ft-gray">
+                    <span>
                     ${statistic.statisticBlogViewCount}
                     </span>
                     &nbsp;&nbsp;
                 ${articleCount1Label}
-                    <span class="ft-gray">
+                    <span>
                     ${statistic.statisticPublishedBlogArticleCount}
                     </span>
                     &nbsp;&nbsp;
                 ${commentCount1Label}
-                    <span class="ft-gray">
+                    <span>
                     ${statistic.statisticPublishedBlogCommentCount}
                     </span>
                 </div>
