@@ -1,4 +1,4 @@
-<footer id="footer" role="banner">
+<footer id="footer">
     <div class="navbar-inner">
         <div class="container">
             <div class="pull-left">

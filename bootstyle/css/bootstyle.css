@@ -2,8 +2,16 @@ body.top-navbar {
     padding-top: 60px;
 }
 
-#sidebar a:hover{
+a:hover{
     text-decoration:none;
+    color: #00B;
+}
+
+.page-header a{
+    color: #000000;
+}
+.page-header a:hover{
+    color: #9A9A9A;
 }
 
 .page-header-m{
@@ -16,10 +24,6 @@ body.top-navbar {
     color: #585858;
 }
 
-.page-header-bottom a:hover{
-    text-decoration: none;
-}
-
 .article-tags{
     color: #676767;
     font-size: 12px;
@@ -29,6 +33,13 @@ body.top-navbar {
     text-decoration: none;
 }
 
+#footer{
+    margin-top: 20px;
+}
 #footer .container{
     padding: 10px 15px 10px;
+}
+
+.pagination-btn{
+    margin-top: 20px;
 }
