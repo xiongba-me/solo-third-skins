@@ -2,29 +2,34 @@
 <!-- comments -->
 <div id="comments" class="comments article-comments">
     <#list commentList as comment>
-        <div class="media bs-docs-example-child" id="${comment.oId}">
+        <div class="media bs-docs-example-child" id="media_${comment.oId}">
             <#if "http://" == comment.commentURL>
                 <a class="pull-left" title="${comment.commentName}"><img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="${comment.commentThumbnailURL}"></a>
             <#else>
                 <a class="pull-left" href="${comment.commentURL}" target="_blank"><img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="${comment.commentThumbnailURL}"></a>
             </#if>
-            <div class="media-body">
+            <div class="media-body" id="${comment.oId}">
                 <h4 class="media-heading">
                     <#if "http://" == comment.commentURL>
                         <a>${comment.commentName}</a>
                     <#else>
                         <a href="${comment.commentURL}" target="_blank">${comment.commentName}</a>
                     </#if>
+                    <#if comment.isReply>
+                        <i class="icon-share-alt"></i>
+                        <a href="${servePath}${article.permalink}#${comment.commentOriginalCommentId}"
+                           onmouseover="page.showComment(this, '${comment.commentOriginalCommentId}', 20);"
+                           onmouseout="page.hideComment('${comment.commentOriginalCommentId}')">${comment.commentOriginalCommentName}</a>
+                    </#if>
+                    <span class="pull-right" style="font-size: 12px;font-weight: normal;color: #676767;">
+                        <i class="icon-time"></i> ${comment.commentDate?string("yyyy-MM-dd HH:mm:ss")}
+                        <i class="icon-comment"></i><a rel="nofollow" href="javascript:replyTo('${comment.oId}');">${replyLabel}</a>
+                    </span>
                 </h4>
                 ${comment.commentContent}
                 <!-- Nested media object -->
-                <#if comment.isReply>
-                <div class="media">
-                    <a href="${servePath}${article.permalink}#${comment.commentOriginalCommentId}"
-                       onmouseover="page.showComment(this, '${comment.commentOriginalCommentId}', 20);"
-                       onmouseout="page.hideComment('${comment.commentOriginalCommentId}')">${comment.commentOriginalCommentName}</a>
+                <div class="media" ref="#media_${comment.commentOriginalCommentId}">
                 </div>
-                </#if>
             </div>
         </div>
     </#list>
@@ -32,7 +37,7 @@
 
 <!-- Leave a comment -->
 <#if article.commentable>
-<form class="well form-horizontal">
+<form class="well form-horizontal" id="commentForm">
     <div class="control-group">
         <div class="input-prepend">
             <span class="add-on"><i class="icon-user"></i></span>
@@ -89,38 +94,6 @@
 <div id="externalRelevantArticles" class="article-relative"></div>
 </#if>
 </#if>
-
-<div id="comments">
-    <#list commentList as comment>
-        <div id="${comment.oId}">
-            <img class="comment-header" title="${comment.commentName}"
-                 alt="${comment.commentName}" src="${comment.commentThumbnailURL}"/>
-            <div class="comment-panel">
-                <div class="left">
-                    <#if "http://" == comment.commentURL>
-                        <a>${comment.commentName}</a>
-                    <#else>
-                        <a href="${comment.commentURL}" target="_blank">${comment.commentName}</a>
-                    </#if>
-                    <#if comment.isReply>@
-                        <a href="${servePath}${article.permalink}#${comment.commentOriginalCommentId}"
-                           onmouseover="page.showComment(this, '${comment.commentOriginalCommentId}', 20);"
-                           onmouseout="page.hideComment('${comment.commentOriginalCommentId}')">${comment.commentOriginalCommentName}</a>
-                    </#if>
-                </div>
-                <#if article.commentable>
-                    <div class="right  ft-gray">
-                    ${comment.commentDate?string("yy-MM-dd HH:mm")}
-                        <a rel="nofollow" href="javascript:replyTo('${comment.oId}');">${replyLabel}</a>
-                    </div>
-                </#if>
-                <span class="clear"></span>
-                <div class="article-body">${comment.commentContent}</div>
-            </div>
-            <span class="clear"></span>
-        </div>
-    </#list>
-</div>
 </#macro>
 
 <#macro comment_script oId>
@@ -142,33 +115,12 @@
     });
 
     var addComment = function (result, state) {
-        var commentHTML = '<div id="' + result.oId + '"><img class="comment-header" \
-            title="' + $("#commentName" + state).val() + '" alt="' + $("#commentName" + state).val() +
-            '" src="' + result.commentThumbnailURL + '"/><div class="comment-panel"><div class="left">' + result.replyNameHTML;
-
-        if (state !== "") {
-            var commentOriginalCommentName = $("#" + page.currentCommentId + " .comment-panel>.left a").first().text();
-            commentHTML += '&nbsp;@&nbsp;<a href="${servePath}' + result.commentSharpURL.split("#")[0] + '#' + page.currentCommentId + '"'
-                + 'onmouseover="page.showComment(this, \'' + page.currentCommentId + '\', 20);"'
-                + 'onmouseout="page.hideComment(\'' + page.currentCommentId + '\')">' + commentOriginalCommentName + '</a>';
-        }
-
-        commentHTML += '</div><div class="right ft-gray">' +  result.commentDate.substring(2, 16)
-            + '&nbsp;<a rel="nofollow" href="javascript:replyTo(\'' + result.oId
-            + '\');">${replyLabel}</a></div><span class="clear"></span><div class="article-body">' +
-            Util.replaceEmString($("#comment" + state).val().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g,"<br/>"))
-            + '</div></div><span class="clear"></span></div>';
-
-        return commentHTML;
+        return "";
     }
 
     var replyTo = function (id) {
-        var commentFormHTML = "<table class='form' id='replyForm'>";
-        page.addReplyForm(id, commentFormHTML);
-        $("#replyForm label").each(function () {
-            $this = $(this);
-            $this.attr("for", $this.attr("for") + "Reply");
-        });
+        var commentFormHTML = "<form class='well form-horizontal' id='replyForm'>";
+        page.addReplyForm(id, commentFormHTML,'</form>');
     };
 
     (function () {
@@ -176,6 +128,6 @@
         // emotions
         page.replaceCommentsEm("#comments .article-body");
             <#nested>
-        })();
+    })();
 </script>
 </#macro>
