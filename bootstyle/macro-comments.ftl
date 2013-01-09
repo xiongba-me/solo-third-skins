@@ -115,7 +115,26 @@
     });
 
     var addComment = function (result, state) {
-        return "";
+        var html = new Array();
+        html.push('<div class="media bs-docs-example-child" id="media_'+result.oId+'">');
+        html.push('<a class="pull-left" href="#" target="_blank">');
+        html.push('<img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="'+result.commentThumbnailURL+'">');
+        html.push('</a>');
+        html.push('<div class="media-body" id="'+result.oId+'">');
+        html.push('<h4 class="media-heading">');
+        html.push(result.replyNameHTML);
+        if (state !== "") {
+            html.push('&nbsp;<i class="icon-share-alt"></i>');
+            html.push('&nbsp;<a href="#'+page.currentCommentId+'">'+page.currentCommentId+'</a>');
+        }
+        html.push('<span class="pull-right" style="font-size: 12px;font-weight: normal;color: #676767;">');
+        html.push('<i class="icon-time"></i> '+ result.commentDate.substring(0, 19));
+        html.push('&nbsp;<i class="icon-comment"></i>');
+        html.push('<a rel="nofollow" href="javascript:replyTo(\''+result.oId+'\');">${replyLabel}</a>');
+        html.push('</span>');
+        html.push('</h4>');
+        html.push(Util.replaceEmString($("#comment" + state).val().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g,"<br/>")));
+        return html.join('');
     }
 
     var replyTo = function (id) {

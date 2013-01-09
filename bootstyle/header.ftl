@@ -17,9 +17,6 @@
                         <a href="${servePath}/tags.html">${allTagsLabel}</a>
                     </li>
                     <li>
-                        <a href="${servePath}/archives.html">${archiveLabel}</a>
-                    </li>
-                    <li>
                         <a rel="alternate" href="${servePath}/blog-articles-feed.do">Atom<img src="${staticServePath}/images/feed.png" alt="Atom"/></a>
                     </li>
                 </ul>

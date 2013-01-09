@@ -155,3 +155,54 @@ a:hover {
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
+
+/* start tags */
+#tags.other-main {
+    list-style: none;
+}
+
+#tags li {
+    float: left;
+    height: 38px;
+}
+
+#tags a {
+    margin: 3px 6px;
+    padding: 3px 12px;
+    background-color: #FCFCFC;
+    box-shadow: 0 0 2px #D5D5D5;
+    float: left;
+}
+
+#tags a:hover {
+    text-shadow: 0 0 2px;
+    text-decoration: none;
+    box-shadow: 0 0 4px #D5D5D5;
+    color: #769abb;
+}
+
+.tags1, .tags1:visited {
+    font-size: 12px;
+    color: #a7a7a7;
+}
+
+.tags2, .tags2:visited {
+    font-size: 14px;
+    color: #808080;
+}
+
+.tags3, .tags3:visited {
+    font-size: 16px;
+    color: #595959;
+}
+
+.tags4, .tags4:visited {
+    font-size: 18px;
+    color: #323232;
+}
+
+.tags5, .tags5:visited {
+    font-size: 20px;
+    color: #0a0a0a;
+}
+/* end tags */

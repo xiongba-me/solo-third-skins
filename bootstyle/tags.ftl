@@ -7,23 +7,27 @@
         <meta name="description" content="<#list tags as tag>${tag.tagTitle}<#if tag_has_next>,</#if></#list>"/>
         </@head>
     </head>
-    <body>
-        ${topBarReplacement}
+    <body class="home page top-navbar">
         <#include "header.ftl">
-        <div class="main">
-            <div class="wrapper">
-                <ul id="tags" class="other-main">
+        <div id="wrap" class="container" role="document">
+            <div id="content" class="row">
+                <div id="main" class="span8" role="main">
+                    <ul id="tags" class="other-main">
                     <#list tags as tag>
-                    <li>
-                        <a rel="tag" data-count="${tag.tagPublishedRefCount}"
-                           href="${servePath}/tags/${tag.tagTitle?url('UTF-8')}" title="${tag.tagTitle}">
-                            <span>${tag.tagTitle}</span>
-                            (<b>${tag.tagPublishedRefCount}</b>)
-                        </a>
-                    </li>
+                        <li>
+                            <a rel="tag" data-count="${tag.tagPublishedRefCount}"
+                               href="${servePath}/tags/${tag.tagTitle?url('UTF-8')}" title="${tag.tagTitle}">
+                                <span>${tag.tagTitle}</span>
+                                (<b>${tag.tagPublishedRefCount}</b>)
+                            </a>
+                        </li>
                     </#list>
-                </ul>
-                <div class="clear"></div>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <aside id="sidebar" class="span4">
+                <#include "side.ftl">
+                </aside>
             </div>
         </div>
         <#include "footer.ftl">
