@@ -2,6 +2,7 @@ B3log Solo 第三方皮肤
 -------------------------------------------------------
 
 如果你要贡献皮肤给 B3log Solo，Fork 此库进行皮肤开发，完成后 Pull Request 吧！
+
 If you want to contribute skins to B3log Solo, fork this repository and pull request after the new skins done!
 
 -------------------------------------------------------
