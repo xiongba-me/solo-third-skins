@@ -18,4 +18,4 @@ B3log Solo 第三方皮肤
 
 Equality, Freedom, Passion
 
-;-）
+;-)
