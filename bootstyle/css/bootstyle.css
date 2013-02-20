@@ -131,10 +131,16 @@ a:hover {
 
 .article-comments{
     margin-bottom: 20px;
+    position: relative;
+}
+
+.comment-body-ref {
+    position: absolute;
+    left: 86px;
+    width: 80%;
 }
 
 .bs-docs-example {
-    position: relative;
     padding: 20px;
     *padding-top: 0px;
     background-color: #fff;
@@ -146,7 +152,6 @@ a:hover {
 }
 
 .bs-docs-example-child {
-    position: relative;
     padding: 5px;
     *padding-top: 0px;
     background-color: #fff;

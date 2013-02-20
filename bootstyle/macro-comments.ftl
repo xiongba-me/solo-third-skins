@@ -2,36 +2,38 @@
 <!-- comments -->
 <div id="comments" class="comments article-comments">
     <#list commentList as comment>
-        <div class="media bs-docs-example-child" id="media_${comment.oId}">
-            <#if "http://" == comment.commentURL>
-                <a class="pull-left" title="${comment.commentName}"><img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="${comment.commentThumbnailURL}"></a>
-            <#else>
-                <a class="pull-left" href="${comment.commentURL}" target="_blank"><img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="${comment.commentThumbnailURL}"></a>
-            </#if>
-            <div class="media-body" id="${comment.oId}">
-                <h4 class="media-heading">
-                    <#if "http://" == comment.commentURL>
-                        <a>${comment.commentName}</a>
-                    <#else>
-                        <a href="${comment.commentURL}" target="_blank">${comment.commentName}</a>
-                    </#if>
-                    <#if comment.isReply>
-                        <i class="icon-share-alt"></i>
-                        <a href="${servePath}${article.permalink}#${comment.commentOriginalCommentId}"
-                           onmouseover="page.showComment(this, '${comment.commentOriginalCommentId}', 20);"
-                           onmouseout="page.hideComment('${comment.commentOriginalCommentId}')">${comment.commentOriginalCommentName}</a>
-                    </#if>
-                    <span class="pull-right" style="font-size: 12px;font-weight: normal;color: #676767;">
-                        <i class="icon-time"></i> ${comment.commentDate?string("yyyy-MM-dd HH:mm:ss")}
-                        <i class="icon-comment"></i><a rel="nofollow" href="javascript:replyTo('${comment.oId}');">${replyLabel}</a>
-                    </span>
-                </h4>
-                ${comment.commentContent}
-                <!-- Nested media object -->
-                <div class="media" ref="#media_${comment.commentOriginalCommentId}">
-                </div>
+    <div class="media bs-docs-example-child" id="${comment.oId}">
+        <#if "http://" == comment.commentURL>
+        <a class="pull-left" title="${comment.commentName}"><img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="${comment.commentThumbnailURL}"></a>
+        <#else>
+        <a class="pull-left" href="${comment.commentURL}" target="_blank"><img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="${comment.commentThumbnailURL}"></a>
+        </#if>
+        <div class="media-body">
+            <h4 class="media-heading">
+                <#if "http://" == comment.commentURL>
+                <a>${comment.commentName}</a>
+                <#else>
+                <a href="${comment.commentURL}" target="_blank">${comment.commentName}</a>
+                </#if>
+                <#if comment.isReply>
+                <i class="icon-share-alt"></i>
+                <a href="${servePath}${article.permalink}#${comment.commentOriginalCommentId}"
+                   onmouseover="page.showComment(this, '${comment.commentOriginalCommentId}', 10);"
+                   onmouseout="page.hideComment('${comment.commentOriginalCommentId}')">${comment.commentOriginalCommentName}</a>
+                </#if>
+                <span class="pull-right" style="font-size: 12px;font-weight: normal;color: #676767;">
+                    <i class="icon-time"></i> 
+                    ${comment.commentDate?string("yyyy-MM-dd HH:mm:ss")}
+                    <i class="icon-comment"></i>
+                    <a rel="nofollow" href="javascript:replyTo('${comment.oId}');">${replyLabel}</a>
+                </span>
+            </h4>
+            ${comment.commentContent}
+            <!-- Nested media object -->
+            <div class="media" ref="#media_${comment.commentOriginalCommentId}">
             </div>
         </div>
+    </div>
     </#list>
 </div>
 
@@ -116,7 +118,7 @@
 
     var addComment = function (result, state) {
         var html = new Array();
-        html.push('<div class="media bs-docs-example-child" id="media_'+result.oId+'">');
+        html.push('<div class="media bs-docs-example-child" id="'+result.oId+'">');
         html.push('<a class="pull-left" href="#" target="_blank">');
         html.push('<img class="media-object img-polaroid" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="'+result.commentThumbnailURL+'">');
         html.push('</a>');
@@ -124,12 +126,15 @@
         html.push('<h4 class="media-heading">');
         html.push(result.replyNameHTML);
         if (state !== "") {
+            var commentOriginalCommentName = $("#" + page.currentCommentId + " .media-heading a").first().text();
             html.push('&nbsp;<i class="icon-share-alt"></i>');
-            html.push('&nbsp;<a href="#'+page.currentCommentId+'">'+page.currentCommentId+'</a>');
+            html.push('&nbsp;<a href="${servePath}' + result.commentSharpURL.split("#")[0] + '#' + page.currentCommentId + '"'
+                + 'onmouseover="page.showComment(this, \'' + page.currentCommentId + '\', 20);"'
+                + 'onmouseout="page.hideComment(\'' + page.currentCommentId + '\')">'+commentOriginalCommentName+'</a>');
         }
         html.push('<span class="pull-right" style="font-size: 12px;font-weight: normal;color: #676767;">');
         html.push('<i class="icon-time"></i> '+ result.commentDate.substring(0, 19));
-        html.push('&nbsp;<i class="icon-comment"></i>');
+        html.push('&nbsp;<i class="icon-comment"></i>&nbsp;');
         html.push('<a rel="nofollow" href="javascript:replyTo(\''+result.oId+'\');">${replyLabel}</a>');
         html.push('</span>');
         html.push('</h4>');
@@ -147,6 +152,6 @@
         // emotions
         page.replaceCommentsEm("#comments .article-body");
             <#nested>
-    })();
+        })();
 </script>
 </#macro>
