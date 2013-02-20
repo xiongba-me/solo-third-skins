@@ -25,7 +25,7 @@
                 </div>
                 <div class="right">
                 	<#if article.commentable>
-                    <a class="no-underline" href="javascript:replyTo('${comment.oId}');">${replyLabel}</a>
+                    <a rel="nofollow" class="no-underline" href="javascript:replyTo('${comment.oId}');">${replyLabel}</a>
                     </#if>
                 </div>
                 <div class="clear"></div>
@@ -114,7 +114,7 @@
 <#macro comment_script oId>
 <script type="text/javascript" src="/js/page${miniPostfix}.js?${staticResourceVersion}" charset="utf-8"></script>
 <script type="text/javascript">
-    var page = new Page({
+   var page = new Page({
         "nameTooLongLabel": "${nameTooLongLabel}",
         "mailCannotEmptyLabel": "${mailCannotEmptyLabel}",
         "mailInvalidLabel": "${mailInvalidLabel}",
@@ -129,32 +129,25 @@
         "externalRelevantArticles1Label": "${externalRelevantArticles1Label}"
     });
 
-    var addComment = function (result, state) {
+     var addComment = function (result, state) {
         var commentHTML = '<div id="' + result.oId
             + '" class="comment-body"><div class="comment-panel"><div class="left comment-author">'
             + '<div><img alt="' + $("#commentName" + state).val() + '" src="' +
             result.commentThumbnailURL + '"/></div>' + result.replyNameHTML;
 
-        <#--if ($("#commentURL" + state).val().replace(/\s/g, "") === "") {
-            commentHTML += '<a>' + $("#commentName" + state).val() + '</a>';
-        } else {
-            commentHTML += '<a href="http://' + $("#commentURL" + state).val() + '" target="_blank">' + 
-                $("#commentName" + state).val() + '</a>';
-        }-->
         commentHTML += '</div><div class="left comment-info"><div class="left">' + result.commentDate;
         if (state !== "") {
             var commentOriginalCommentName = $("#" + page.currentCommentId).find(".comment-author a").text();
-            commentHTML += '&nbsp;@&nbsp;<a href="' + result.commentSharpURL.split("#")[0] + '#' + page.currentCommentId + '"'
-                + 'onmouseover="showComment(this, \'' + page.currentCommentId + '\');"'
+            commentHTML += '&nbsp;@&nbsp;<a href="${servePath}' + result.commentSharpURL.split("#")[0] + '#' + page.currentCommentId + '"'
+                + 'onmouseover="page.showComment(this, \'' + page.currentCommentId + '\', 3);"'
                 + 'onmouseout="page.hideComment(\'' + page.currentCommentId + '\')">' + commentOriginalCommentName + '</a>';
         }
-        commentHTML += '</div><div class="right"> <a class="no-underline" href="javascript:replyTo(\''
+        commentHTML += '</div><div class="right"> <a rel="nofollow" class="no-underline" href="javascript:replyTo(\''
             + result.oId + '\');">${replyLabel}</a>'
             +'</div><div class="clear"></div><div class="comment-content">'
             + Util.replaceEmString($("#comment" + state).val().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g,"<br/>"))
             + '</div></div><div class="clear"></div></div></div>';
 
-        <#--page.addCommentAjax(commentHTML, state);-->
         $("#comments").addClass("comments");
         return commentHTML;
     }
@@ -162,20 +155,7 @@
     var replyTo = function (id) {
         var commentFormHTML = "<table class='marginTop12 comment-form' id='replyForm'>";
         page.addReplyForm(id, commentFormHTML);
-    }
-
-    // var showComment = function (it, id) {
-    //     if ( $("#commentRef" + id).length > 0) {
-    //         $("#commentRef" + id).show();
-    //     } else {
-    //         var $refComment = $("#" + id + " .comment-panel").clone();
-    //         $refComment.removeClass().addClass("comment-body-ref").attr("id", "commentRef" + id);
-    //         $("#comments").append($refComment);
-    //     }
-    //     var position =  $(it).position();
-    //     $("#commentRef" + id).css("top", (position.top + 18) + "px");
-    // };
-
+    };
     (function () {
         page.load();
         // emotions

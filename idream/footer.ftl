@@ -45,7 +45,8 @@
     };
     $(document).ready(function () {
     	//Util.goTop();Util.goBottom();
-    	Util.init();Util.replaceSideEm($(".side-navi .navi-comments li div.left"));
+    	Util.init();Util.replaceSideEm($("#newcomment li"));
+
     });
     
     // set selected navi
