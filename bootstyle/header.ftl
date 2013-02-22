@@ -1,4 +1,4 @@
-<header id="banner" class="navbar navbar-fixed-top" role="banner">
+<header id="banner" class="navbar navbar-fixed-top" role="banner" style="z-index: 9;">
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
