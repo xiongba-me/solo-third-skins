@@ -9,6 +9,7 @@
                     <span style="color: orangered; font-weight: bold;">Solo</span></a>,
                 ver ${version}&nbsp;&nbsp;
                 Theme by <a rel="friend" rel="friend" href="http://www.oncereply.me" target="_blank">oncereply</a>.
+                <a href="${servePath}/admin-index.do#main">${adminLabel}</a>
             </div>
             <div class="pull-right">
                 <div class="pull-left">
