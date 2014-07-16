@@ -156,7 +156,7 @@
                         $(document).ready(function() {
                             page.load();
                             // emotions
-                            page.replaceCommentsEm("#comments .article-body");
+                            page.replaceCommentsEm("#comments");
                             <#nested>
                         });
 </script>
