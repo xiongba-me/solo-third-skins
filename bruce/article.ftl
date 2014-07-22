@@ -58,12 +58,6 @@
         <#include "footer.ftl">
         <@comment_script oId=article.oId>
         page.tips.externalRelevantArticlesDisplayCount = "${externalRelevantArticlesDisplayCount}";
-        <#if 0 != randomArticlesDisplayCount>
-        page.loadRandomArticles('<h4 class="ft-gray">${randomArticlesLabel}</h4>');
-        </#if>
-        <#if 0 != relevantArticlesDisplayCount>
-        page.loadRelevantArticles('${article.oId}', '<h4 class="ft-gray">${relevantArticlesLabel}</h4>');
-        </#if>
         <#if 0 != externalRelevantArticlesDisplayCount>
         page.loadExternalRelevantArticles("<#list article.articleTags?split(",") as articleTag>${articleTag}<#if articleTag_has_next>,</#if></#list>");
         </#if>
