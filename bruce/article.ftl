@@ -36,7 +36,7 @@
                                 <#setting locale=localeString>
                             </div>
 
-                            <div class="row article-content">
+                            <div class="row article-content code-highlight">
                                 <div class="col-sm-12" id="abstract${article.oId}">
                                     ${article.articleContent}
                                     <#if "" != article.articleSign.signHTML?trim>

@@ -22,7 +22,7 @@
                     </#if></span>
 
             </div>
-            <div class="row">${comment.commentContent}</div>
+            <div class="row code-highlight">${comment.commentContent}</div>
         </div>
     </div>
     </#list>
