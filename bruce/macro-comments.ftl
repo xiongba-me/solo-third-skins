@@ -1,36 +1,38 @@
 <#macro comments commentList article>
 <div class="row" id="comments">
-    <#list commentList as comment>
-    <div class="row comment" id="${comment.oId}">
-        <img class="col-sm-1" title="${comment.commentName}"
-             alt="${comment.commentName}" src="${comment.commentThumbnailURL}"/>
-        <div class="col-sm-11">
-            <div class="row">
-                <#if "http://" == comment.commentURL>
-                <a>${comment.commentName}</a>
-                <#else>
-                <a href="${comment.commentURL}" target="_blank">${comment.commentName}</a>
-                </#if>
-                <#if comment.isReply>@
-                <a href="${servePath}${article.permalink}#${comment.commentOriginalCommentId}"
-                   onmouseover="page.showComment(this, '${comment.commentOriginalCommentId}', 20);"
-                   onmouseout="page.hideComment('${comment.commentOriginalCommentId}')">${comment.commentOriginalCommentName}</a>
-                </#if>
+    <div class="col-sm-12">
+        <#list commentList as comment>
+        <div class="row comment" id="${comment.oId}">
+            <img class="col-sm-1" title="${comment.commentName}"
+                 alt="${comment.commentName}" src="${comment.commentThumbnailURL}"/>
+            <div class="col-sm-11">
+                <div class="row">
+                    <#if "http://" == comment.commentURL>
+                    <a>${comment.commentName}</a>
+                    <#else>
+                    <a href="${comment.commentURL}" target="_blank">${comment.commentName}</a>
+                    </#if>
+                    <#if comment.isReply>@
+                    <a href="${servePath}${article.permalink}#${comment.commentOriginalCommentId}"
+                       onmouseover="page.showComment(this, '${comment.commentOriginalCommentId}', 20);"
+                       onmouseout="page.hideComment('${comment.commentOriginalCommentId}')">${comment.commentOriginalCommentName}</a>
+                    </#if>
 
-                <span class="gray">• ${comment.commentDate?string("yy-MM-dd HH:mm")} • <#if article.commentable>
-                    <a rel="nofollow" href="javascript:replyTo('${comment.oId}');">Reply</a>
-                    </#if></span>
+                    <span class="gray">• ${comment.commentDate?string("yy-MM-dd HH:mm")} • <#if article.commentable>
+                        <a rel="nofollow" href="javascript:replyTo('${comment.oId}');">Reply</a>
+                        </#if></span>
 
+                </div>
+                <div class="row code-highlight">${comment.commentContent}</div>
             </div>
-            <div class="row code-highlight">${comment.commentContent}</div>
         </div>
+        </#list>
     </div>
-    </#list>
 </div>
 
 <#if article.commentable>
 <div class="row cmtForm">
-    <table id="commentForm">
+    <table id="commentForm" class="col-sm-12">
         <tbody>
             <#if !isLoggedIn>
             <tr>
@@ -70,7 +72,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <textarea rows="10" cols="72" id="comment"></textarea>
+                    <textarea rows="10" style="width: 100%;" id="comment"></textarea>
                 </td>
             </tr>
             <#if !isLoggedIn>
@@ -117,7 +119,7 @@
                             "externalRelevantArticles1Label": "${externalRelevantArticlesLabel}"
                         });
 
-                        var addComment = function(result, state) {
+                        var addComment = function (result, state) {
                             var commentHTML = '<div class="row comment" id="' + result.oId + '"><img class="col-sm-1" \
                                     title="' + result.userName + '" alt="' + result.userName +
                                     '" src="' + result.commentThumbnailURL
@@ -144,16 +146,16 @@
                             return commentHTML;
                         };
 
-                        var replyTo = function(id) {
+                        var replyTo = function (id) {
                             var commentFormHTML = "<table class='cmtReplyForm' id='replyForm'>";
                             page.addReplyForm(id, commentFormHTML);
-                            $("#replyForm label").each(function() {
+                            $("#replyForm label").each(function () {
                                 $this = $(this);
                                 $this.attr("for", $this.attr("for") + "Reply");
                             });
                         };
 
-                        $(document).ready(function() {
+                        $(document).ready(function () {
                             page.load();
                             // emotions
                             page.replaceCommentsEm("#comments");
