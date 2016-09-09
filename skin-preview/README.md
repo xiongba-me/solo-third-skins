@@ -14,10 +14,10 @@ Equality, Freedom, Passion
 ![bootstyle](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/bootstyle.jpg?raw=true)
 
 * [dashu03](https://github.com/b3log/solo-third-skins/tree/master/dashu03)
-![dashu03](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/dashu03.jpg?raw=true)
+![dashu03](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/dashu03.png?raw=true)
 
 * [community-bubbles](https://github.com/b3log/solo-third-skins/tree/master/community-bubbles)
-![community-bubbles](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/community-bubbles.jpg?raw=true)
+![community-bubbles](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/community-bubbles.png?raw=true)
 
 * [Dot-B](https://github.com/b3log/solo-third-skins/tree/master/Dot-B)
 ![Dot-B](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/Dot-B.jpg?raw=true)
