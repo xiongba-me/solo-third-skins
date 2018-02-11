@@ -10,6 +10,10 @@ Equality, Freedom, Passion
 ;-）
 
 ----------------------------
+
+* [iMobile](https://github.com/b3log/solo-third-skins/tree/master/iMobile)
+![iMobile](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/iMobile.jpg?raw=true)
+
 * [bootstyle](https://github.com/b3log/solo-third-skins/tree/master/bootstyle)
 ![bootstyle](https://github.com/b3log/solo-third-skins/blob/master/skin-preview/bootstyle.jpg?raw=true)
 
