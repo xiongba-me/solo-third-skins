@@ -28,7 +28,6 @@
 <script src="/skins/${skinDirName}/js/common${miniPostfix}.js?${staticResourceVersion}" charset="utf-8"></script>
 <script src="/skins/${skinDirName}/js/yilia7${miniPostfix}.js?${staticResourceVersion}" charset="utf-8"></script>
 <script src="/skins/${skinDirName}/js/lib/layer/layer.js?${staticResourceVersion}"></script>
-<script src="/skins/${skinDirName}/js/welcome.js?${staticResourceVersion}"></script>
 <style>.layui-layer-page .layui-layer-content:not(#layui-layer-photos){ overflow: hidden; }.layui-layer-resize{width:0;height:0;border-width:5px;border-style:ridge;border-color:transparent #666 #666 transparent;}</style>
 <script>
   if (typeof(returnCitySN) != 'undefined') {
