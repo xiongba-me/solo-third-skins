@@ -175,11 +175,11 @@ pre code, pre tt {
 /* start common */
 @font-face {
     font-family: 'icomoon';
-    src:url('/skins/mobile/css/fonts/icomoon.eot?3js4w7');
-    src:url('/skins/mobile/css/fonts/icomoon.eot?3js4w7#iefix') format('embedded-opentype'),
-        url('/skins/mobile/css/fonts/icomoon.ttf?3js4w7') format('truetype'),
-        url('/skins/mobile/css/fonts/icomoon.woff?3js4w7') format('woff'),
-        url('/skins/mobile/css/fonts/icomoon.svg?3js4w7#icomoon') format('svg');
+    src:url('/skins/iMobile/css/fonts/icomoon.eot?3js4w7');
+    src:url('/skins/iMobile/css/fonts/icomoon.eot?3js4w7#iefix') format('embedded-opentype'),
+        url('/skins/iMobile/css/fonts/icomoon.ttf?3js4w7') format('truetype'),
+        url('/skins/iMobile/css/fonts/icomoon.woff?3js4w7') format('woff'),
+        url('/skins/iMobile/css/fonts/icomoon.svg?3js4w7#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
