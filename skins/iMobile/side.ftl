@@ -6,7 +6,7 @@
 	<img class="avatar itip ifixed" id="logoicon" src="${adminUser.userAvatar}" title="${blogTitle?html}" alt="${blogTitle?html}"
 	lang="使用移动设备访问<br><img src='http://qr.liantu.com/api.php?text=${servePath}' width='123' height='123' border='1'>"/>
 </a>
-<hgroup><h1><a href="#" class="itip ifixed" id="logofont">${blogTitle}</a></h1></hgroup>
+<hgroup><h1><a href="#" class="itip ifixed" id="logofont" lang="${blogTitle}">${blogTitle}</a></h1></hgroup>
 <#if "" != noticeBoard>
 <p class="subtitle">${blogSubtitle}</p>
 </#if>
