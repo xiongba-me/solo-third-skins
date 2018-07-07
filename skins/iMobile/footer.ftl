@@ -48,8 +48,9 @@
     layer.tips(msg, selector, {tips:[ipoint,'#333'], fixed:ifixed, time:6000});
   };
   $(function($) {
+    Util.parseMarkdown();
     // link target
-    $("main a, footer a").not("header a,a.quote-link,.pagination a,a.tag,a[rel='prev'],a[rel='next']").attr("target", "_blank"); 
+    $("main a, footer a").not("header a,a.quote-link,.pagination a,a.tag,a[rel='prev'],a[rel='next'],a[href^='javascript:'],a[id^='goto_']").attr("target", "_blank");
     if($("body").width() > 750) {
       if(Cookie.readCookie("showTips") != "0") {
         <#-- 鼠标悬浮提示 -->
